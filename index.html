@@ -21,8 +21,31 @@
     </h1>
 
     <div class="game-area">
+        <div class="controls-area">
+            <button class="btn btn--big--btn green">
+                <i class="fa fa-plus"></i>
+            </button>
+            <button class="btn btn--big--btn blue">
+                <i class="fa fa-minus"></i>
+            </button>
+            <button class="btn btn--big--btn orange">
+                <i class="fa fa-times"></i>
+            </button>
+            <button class="btn btn--big--btn red">
+                <i class="fa fa-divide"></i>
+            </button>
 
+
+        </div>
+        <div class="question-area"></div>
+        <span id="operands1">0</span>
+        <span id="operator">x</span>
+        <span id="operands2">0</span>
+        <span></span>
+        <p class="answer-message">Enter Answer</p>
+        <input id="answer-box" type="number">
     </div>
+    <button class="btn btn--grey">Submit Answer</button>
 
     <div class="score-area">
         <p class="scores">Correct Answers: <span id="score">0</span></p>
