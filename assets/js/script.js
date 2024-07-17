@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "submit") {
-                alert("You clicked Submit!");
+                checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
@@ -37,13 +37,42 @@ function runGame(gameType) {
     }
 
 }
-
+/**
+ * checks the answer against the first element in the
+ * returened calculatecorrect answer array
+ */
 function checkAnswer() {
+
+    let userAnswer = parseInt(docment.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let iscorrect = userAnswer === calculatedAnswer[0];
+
+    if (iscorrect) {
+        alert("Hey you got it right!");
+    } else {
+        alert(`Awww...You answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+    }
+
+    runGame(calculatedAnswer[1]);
 
 }
 
-function calculateCorrectAnswer() {
+/**
+ * Gets the operands (the numbers) and the operator(plus,minus etc)
+ * directly from the don, and returns the correct answer.
+ */
 
+function calculateCorrectAnswer() {
+    let operand1 = parseInt(document.getElementById('operand1').innerText);
+    let operand2 = parseInt(document.getElementById('operand2').innerText);
+    let operator = document.getElementById("operator").innerText;
+
+    if (operator === "+") {
+        return [operand1 + operand2, "addition"];
+    } else {
+        alert(`unimplimented operator ${operator}`);
+        throw `unimplimented operator ${operator}.Aborting`;
+    }
 }
 
 function incrementScore() {
